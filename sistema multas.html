@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de velocidade</title>
+    <style>
+        body{
+            background-color: rgb(255, 255, 255);
+        }
+
+        .verificar{
+            background-color: rgb(232, 232, 232);
+            width: 500px;
+            height: 500px;
+            margin-top: 50px;
+            padding-top: 5px;
+            padding-bottom: 25px;
+            border-radius: 10%;
+        }
+
+        .verificar .h1t{
+            padding-top: 30px;
+        }
+
+        .verificar .veloc{
+            padding-left: 130px;
+            padding-right: 130px;
+            padding-top: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+        }
+    
+        div.verificar div.veloc input[type="number"]{
+            height: 30px;
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            background: none;
+            border-top: none;
+            border-left: none;   
+            border-right: none;
+            transition: ease-in 0.8s;
+        }
+
+        div.verificar div.veloc input[type="number"]:hover{
+            background: none;
+            border-top: none;
+            border-left: none;   
+            border-right: none;
+            background-color: aliceblue;
+        }
+
+        div.verificar div.veloc select{
+            background-color: aliceblue;
+            height: 30px;
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            border-top: none;
+            border-left: none;   
+            border-right: none;
+            transition: ease-in 0.8s;
+        }
+
+        div.verificar div.veloc select:hover{
+            background: none;
+            border-top: none;
+            border-left: none;   
+            border-right: none;
+            background-color: aliceblue;
+        }
+
+        div.verificar div.veloc input[type="button"]{
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            background-color: rgb(255, 255, 255);
+            font-family: Arial, Helvetica, sans-serif;
+            width: 150px;
+            margin-left: 45px;
+            transition: 2s;
+        }
+
+        div.verificar div.veloc input[type="button"]:hover{
+            background-color: rgb(255, 255, 255);
+            font-family: Arial, Helvetica, sans-serif;
+            width: 150px;
+            margin-left: 45px;
+            transform: scale(1.2);
+        }
+
+        div.verificar div.h1t h2#mun{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+
+        div.veloc label{
+            text-align: justify;
+        }
+
+        /*div.msgVer{
+            width: 350px;
+            height: 350;
+            border-radius: 10px;
+            background-color: cyan;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }*/
+    </style>
+
+    <script>
+        function verifica(){
+            let vel = parseFloat(document.getElementById('vel').value)
+            let rod = (document.getElementById('rod').value)
+            let tipoVeiculo = (document.getElementById('tipoVeiculo').value)
+
+            function mensagem(rod, tipoVeiculo, velmax, velmin) {
+                document.write(`<div class="msgVer" style="width: 350px; height: 200; border-radius: 10px; background-color: lightgray; padding-top: 150px;
+            margin-top: 150px; margin-bottom: 150px; margin-left: 500px; margin-right: 250px; align: center"> Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é <b>${velmax}km/h</b> e a mínima é <b>${velmin}km/h</b>. Você estava viajando a ${vel}km/h. <b>Cuidado!</b> você pode levar uma multa por estar infringindo a velocidade permitida</div>`)
+            }
+        
+/*padding-left: 150px; padding-right: 150px; padding-top: 150px; padding-bottom: 150px; text-align: center;display: flex; flex-direction: column; justify-content: center; */
+
+                if (rod == 'Ayrton Senna' && tipoVeiculo == 'leve' && vel > 100 || vel < 50) {
+                    mensagem('Ayrton Senna', 'leve', 100, 50)
+                    //document.write(`<div class="msgVer">Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 100km/h e a mínima é 50km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida</div>`)
+                } else if (rod == 'Ayrton Senna' && tipoVeiculo == 'pesado' && vel > 80 || vel < 40){
+                    mensagem('Ayrton Senna', 'pesado', 80, 40)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 80km/h e a mínima é 40km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                } else if (rod == 'Dutra' && tipoVeiculo == 'leve' && vel > 110 || vel < 55){
+                    mensagem('Dutra', 'leve', 110, 55)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 110km/h e a mínima é 55km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                } else if (rod == 'Dutra' && tipoVeiculo == 'pesado' && vel > 90 || vel < 45){
+                    mensagem('Dutra', 'pesado', 90, 45)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 90km/h e a mínima é 45km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                } else if (rod == 'Fernão Dias' && tipoVeiculo == 'leve' && vel > 90 || vel < 45){
+                    mensagem('Fernão Dias', 'leve', 90, 45)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 90km/h e a mínima é 45km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                } else if (rod == 'Fernão Dias' && tipoVeiculo == 'pesado' && vel > 60 || vel < 30){
+                    mensagem('Fernão Dias', 'pesado', 60, 30)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 60km/h e a mínima é 30km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                } else if (rod == 'Régis Bittencourt' && tipoVeiculo == 'leve' && vel > 80 || vel < 40){
+                    mensagem('Régis Bittencourt', 'leve', 80, 40)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 80km/h e a mínima é 40km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                } else if (rod == 'Régis Bittencourt' && tipoVeiculo == 'pesado' && vel > 60 || vel < 30){
+                    mensagem('Régis Bittencourt', 'pesado', 60, 30)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 60km/h e a mínima é 30km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                } else if (rod == 'Bandeirantes' && tipoVeiculo == 'leve' && vel > 120 || vel < 60){
+                    mensagem('Bandeirantes', 'leve', 120, 60)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 120km/h e a mínima é 60km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                } else if (rod == 'Bandeirantes' && tipoVeiculo == 'pesado' && vel > 90 || vel < 45){
+                    mensagem('Bandeirantes', 'pesado', 90, 45)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 90km/h e a mínima é 45km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                } else if (rod == 'Anhanguera' && tipoVeiculo == 'leve' && vel > 100 || vel < 50){
+                    mensagem('Anhanguera', 'leve', 100, 50)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 100km/h e a mínima é 50km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                } else if (rod == 'Bandeirantes' && tipoVeiculo == 'pesado' && vel > 90 || vel < 45){
+                    mensagem('Anhanguera', 'pesado', 90, 45)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 90km/h e a mínima é 45km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                } else if (rod == 'Washington Luis' && tipoVeiculo == 'leve' && vel > 90 || vel < 45){
+                    mensagem('Washington Luis', 'leve', 90, 45)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 90km/h e a mínima é 45km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                } else if (rod == 'Washington Luis' && tipoVeiculo == 'pesado' && vel > 90 || vel < 45){
+                    mensagem('Washington Luis', 'pesado', 90, 45)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 90km/h e a mínima é 45km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                }else if (rod == 'Imigrantes' && tipoVeiculo == 'leve' && vel > 120 || vel < 60){
+                    mensagem('Imigrantes', 'leve', 120, 60)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 120km/h e a mínima é 60km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                }else if (rod == 'Imigrantes' && tipoVeiculo == 'pesado' && vel > 90 || vel < 45){
+                    mensagem('Imigrantes', 'pesado', 90, 45)
+                    //document.write(`Você estava trafegando pela Via ${rod}, nessa via a velocidade máxima é 90km/h e a mínima é 45km/h. Você estava viajando a ${vel}km/h. <strong>Cuidado!</strong>, você pode levar uma multa por estar infringindo a velocidade permitida`)
+                }else if (rod == 'Verify' || tipoVeiculo == 'Verify'){
+                    document.write(`<div class="msgVer" style="width: 350px; height: 200; border-radius: 10px; background-color: lightgray; padding-top: 150px;
+            margin-top: 150px; margin-bottom: 150px; margin-left: 500px; margin-right: 250px; align: center">Aparentemente, ocorreu um erro no transporte das informações enviadas. Por favor, recarregue a página e tente novamente.</div>`)
+                } else {
+                    document.write(`<div class="msgVer" style="width: 350px; height: 200; border-radius: 10px; background-color: lightgray; padding-top: 150px;
+            margin-top: 150px; margin-bottom: 150px; margin-left: 500px; margin-right: 250px; align: center">Parece que você estava trafegando dentro dos limites de velocidade da Via ${rod}, sua velocidade era de ${vel}km/h!.</div>`)
+                }
+            }
+    </script>
+</head>
+<body>
+    <center>
+        <div class="verificar">
+            <div class="h1t">
+                <h1>Verificador de velocidade por rodovia</h1>
+                <h2 id="mun">Municípios verificados: Guarulhos e São Paulo</h2>
+            </div>
+            <div class="veloc">
+                Digite a seguir a rodovia em que estava, o seu tipo de veículo e a velocidade na qual trafegava
+                <select name="rod" id="rod" required>
+                    <option value="Verify">----Selecione----</option>
+                    <option value="Ayrton Senna">Rod. Ayrton Senna</option>
+                    <option value="Dutra">Rod. Pres. Dutra</option>
+                    <option value="Fernão Dias">Rod. Fernão Dias</option>
+                    <option value="Régis Bittencourt">Rod. Régis Bittencourt</option>
+                    <option value="Bandeirantes">Rod. Bandeirantes</option>
+                    <option value="Anhanguera">Rod. Anhanguera</option>
+                    <option value="Washington Luis">Rod. Washington Luis</option>
+                    <option value="Imigrantes">Rod. Imigrantes</option>
+                </select>
+                <select name="tipoVeiculo" id="tipoVeiculo" required>
+                    <option value="Verify">----Selecione----</option>
+                    <option value="leve">Leve</option>
+                    <option value="pesado">Pesado</option>
+                </select>
+                <input type="number" name="vel" id="vel" placeholder="Velocidade (sem o km/h)" required>
+                <input type="button" value="Verificar" onclick="verifica()">
+            </div>
+        </div>
+    </center>
+    
+</body>
+</html>
